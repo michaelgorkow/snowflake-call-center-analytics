@@ -271,7 +271,7 @@ def upload_audio_file_to_stage(uploaded_file):
         
         # Refresh the stage to ensure the newly uploaded file is visible
         try:
-            refresh_command = f"ALTER STAGE AUDIO_FILES REFRESH SUBPATH='/{today}/'"
+            refresh_command = f"ALTER STAGE AUDIO_FILES REFRESH SUBPATH='audio_files/{today}/'"
             session.sql(refresh_command).collect()
             st.success(f"✅ Successfully uploaded '{uploaded_file.name}' to folder: {today} and refreshed stage")
         except Exception as refresh_error:
